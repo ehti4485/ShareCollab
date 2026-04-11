@@ -11,8 +11,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:#0a0e1a;color:#f0f4ff;overflow-x:hidden;line-height:1.6}
-
-/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:18px 60px;border-bottom:0.5px solid rgba(99,102,241,0.2);position:sticky;top:0;background:rgba(10,14,26,0.92);backdrop-filter:blur(14px);z-index:100}
 .logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:#fff;text-decoration:none}
 .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#4F46E5,#818cf8);border-radius:9px;display:flex;align-items:center;justify-content:center}
@@ -21,12 +19,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 6
 .nav-links a{color:#94a3b8;text-decoration:none;font-size:14px;transition:color 0.2s}
 .nav-links a:hover{color:#e2e8f0}
 .nav-right{display:flex;gap:12px;align-items:center}
-.btn-ghost{background:transparent;border:0.5px solid rgba(99,102,241,0.35);color:#a5b4fc;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-family:'Inter',sans-serif;transition:all 0.2s}
+.btn-ghost{background:transparent;border:0.5px solid rgba(99,102,241,0.35);color:#a5b4fc;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-family:'Inter',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-ghost:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.6)}
 .btn-primary-sm{background:linear-gradient(135deg,#4F46E5,#6366F1);border:none;color:#fff;padding:9px 22px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;transition:opacity 0.2s}
 .btn-primary-sm:hover{opacity:0.88}
-
-/* HERO */
+.coming-soon-badge{display:inline-block;background:rgba(234,179,8,0.1);border:0.5px solid rgba(234,179,8,0.3);color:#fbbf24;font-size:11px;padding:3px 10px;border-radius:10px;margin-left:8px;vertical-align:middle}
 .hero{padding:100px 60px 80px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.12) 0%,transparent 70%);pointer-events:none}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.1);border:0.5px solid rgba(99,102,241,0.3);padding:7px 18px;border-radius:20px;font-size:13px;color:#a5b4fc;margin-bottom:32px}
@@ -36,16 +33,14 @@ h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,6.5vw,72px);font-
 h1 .gradient{background:linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:18px;color:#94a3b8;max-width:580px;margin:0 auto 40px;line-height:1.75}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
-.btn-lg{padding:15px 30px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
-.btn-lg-primary{background:linear-gradient(135deg,#4F46E5,#6366F1);border:none;color:#fff}
+.btn-lg{padding:15px 30px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:none}
+.btn-lg-primary{background:linear-gradient(135deg,#4F46E5,#6366F1);color:#fff}
 .btn-lg-primary:hover{opacity:0.88;transform:translateY(-2px)}
 .btn-lg-outline{background:transparent;border:0.5px solid rgba(255,255,255,0.18);color:#e2e8f0}
 .btn-lg-outline:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.3)}
 .hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:60px}
 .stat-num{font-size:30px;font-weight:700;color:#fff;font-family:'Space Grotesk',sans-serif}
 .stat-label{font-size:13px;color:#475569;margin-top:3px}
-
-/* MOCKUP */
 .mockup-wrap{background:rgba(20,30,50,0.7);border:0.5px solid rgba(99,102,241,0.22);border-radius:18px;padding:20px;max-width:900px;margin:0 auto}
 .mockup-bar{display:flex;align-items:center;gap:8px;margin-bottom:18px;padding-bottom:14px;border-bottom:0.5px solid rgba(99,102,241,0.12)}
 .dot{width:11px;height:11px;border-radius:50%}
@@ -60,7 +55,6 @@ h1 .gradient{background:linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 10
 .editor-area{background:rgba(20,30,50,0.6);border-radius:8px;padding:14px;min-height:90px;font-size:12px;color:#64748b;line-height:1.7}
 .cursor{color:#6366F1;animation:blink 1.2s step-end infinite}
 .typing-badge{font-size:10px;background:rgba(99,102,241,0.18);color:#a5b4fc;padding:2px 8px;border-radius:4px}
-.clip-panel{margin-top:14px;padding-top:14px;border-top:0.5px solid rgba(99,102,241,0.1)}
 .right-panels{display:flex;flex-direction:column;gap:12px}
 .mini-card{background:rgba(10,14,26,0.7);border-radius:12px;padding:14px;border:0.5px solid rgba(99,102,241,0.12)}
 .mini-title{font-size:11px;color:#94a3b8;font-weight:500;margin-bottom:10px}
@@ -76,31 +70,23 @@ h1 .gradient{background:linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 10
 .time-label{font-size:10px;color:#475569}
 .qr-card{flex:1;background:rgba(10,14,26,0.7);border-radius:10px;padding:12px;text-align:center;border:0.5px solid rgba(99,102,241,0.12)}
 .qr-box{width:44px;height:44px;margin:4px auto;background:repeating-linear-gradient(0deg,rgba(99,102,241,0.25) 0,rgba(99,102,241,0.25) 2px,transparent 2px,transparent 4px),repeating-linear-gradient(90deg,rgba(99,102,241,0.25) 0,rgba(99,102,241,0.25) 2px,transparent 2px,transparent 4px);border-radius:4px}
-
-/* SECTIONS */
 .section{padding:90px 60px}
 .section-alt{background:rgba(20,30,50,0.3)}
 .section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6366F1;font-weight:500;margin-bottom:14px}
 h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-1.5px;margin-bottom:14px;color:#f0f4ff}
 .section-sub{font-size:17px;color:#64748b;max-width:540px;margin:0 auto 56px;line-height:1.75}
 .center{text-align:center}
-
-/* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1020px;margin:0 auto}
 .feat-card{background:rgba(20,30,50,0.5);border:0.5px solid rgba(99,102,241,0.14);border-radius:14px;padding:26px;transition:all 0.22s}
 .feat-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-4px);background:rgba(30,41,60,0.7)}
 .feat-icon{width:44px;height:44px;background:rgba(99,102,241,0.1);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px}
 .feat-title{font-size:16px;font-weight:600;margin-bottom:8px;color:#e2e8f0}
 .feat-desc{font-size:14px;color:#64748b;line-height:1.65}
-
-/* HOW IT WORKS */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px;max-width:920px;margin:0 auto}
 .step{text-align:center;padding:24px 16px}
 .step-num{width:48px;height:48px;background:linear-gradient(135deg,#4F46E5,#818cf8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin:0 auto 18px;color:#fff}
 .step-title{font-size:16px;font-weight:600;margin-bottom:8px;color:#e2e8f0}
 .step-desc{font-size:14px;color:#64748b;line-height:1.65}
-
-/* COMPARE TABLE */
 .compare-wrap{background:rgba(20,30,50,0.5);border:0.5px solid rgba(99,102,241,0.15);border-radius:16px;padding:0;max-width:820px;margin:0 auto;overflow:hidden}
 table{width:100%;border-collapse:collapse;font-size:14px}
 thead tr{background:rgba(99,102,241,0.08)}
@@ -113,24 +99,17 @@ td.qs{color:#a5b4fc}
 .no{color:#ef4444;font-size:16px}
 tr:last-child td{border:none}
 tr:hover td{background:rgba(99,102,241,0.04)}
-
-/* DOWNLOAD SECTION */
 .download-section{padding:60px 60px 80px}
 .dl-box{background:linear-gradient(135deg,rgba(79,70,229,0.18),rgba(99,102,241,0.08));border:0.5px solid rgba(99,102,241,0.28);border-radius:20px;padding:64px 40px;max-width:740px;margin:0 auto;text-align:center}
 .dl-box h2{font-size:clamp(28px,4vw,42px);margin-bottom:16px}
 .dl-box p{color:#94a3b8;font-size:17px;margin-bottom:36px;line-height:1.75}
 .dl-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .dl-note{font-size:13px;color:#334155;margin-top:20px}
-
-/* FOOTER */
 footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .footer-copy{font-size:13px;color:#334155}
 .footer-links{display:flex;gap:24px}
 .footer-links a{font-size:13px;color:#334155;text-decoration:none;transition:color 0.2s}
 .footer-links a:hover{color:#94a3b8}
-.coming-soon-badge{display:inline-block;background:rgba(234,179,8,0.1);border:0.5px solid rgba(234,179,8,0.3);color:#fbbf24;font-size:11px;padding:3px 10px;border-radius:10px;margin-left:8px;vertical-align:middle}
-
-/* RESPONSIVE */
 @media(max-width:768px){
   nav{padding:14px 20px}
   .nav-links{display:none}
@@ -160,9 +139,10 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
     <li><a href="#how">How It Works</a></li>
     <li><a href="#compare">Compare</a></li>
     <li><a href="#download">Download</a></li>
+    <li><a href="waitlist.html">Pro Waitlist</a></li>
   </ul>
   <div class="nav-right">
-    <button class="btn-ghost">Advanced Version <span class="coming-soon-badge">Soon</span></button>
+    <a href="waitlist.html" class="btn-ghost">Advanced Version <span class="coming-soon-badge">Soon</span></a>
     <button class="btn-primary-sm" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Download</button>
   </div>
 </nav>
@@ -174,7 +154,7 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
   <p class="hero-sub">QuickShare Hub turns your local Wi-Fi into a full collaboration workspace. Files, editor, clipboard, chat — all synced instantly across devices.</p>
   <div class="hero-btns">
     <button class="btn-lg btn-lg-primary" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">⬇ Free Download — Windows</button>
-    <button class="btn-lg btn-lg-outline" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">See Features</button>
+    <a href="waitlist.html" class="btn-lg btn-lg-outline">⭐ Join Pro Waitlist</a>
   </div>
   <div class="hero-stats">
     <div><div class="stat-num">500MB</div><div class="stat-label">Transfer in ~3 seconds</div></div>
@@ -206,7 +186,7 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
           </div>
           <div class="editor-area">
             Start typing your shared document here... All edits sync in real-time.<br><br>
-            <span class="cursor">|</span> <span class="typing-badge">Ali typing...</span>
+            <span class="cursor">|</span> <span class="typing-badge">Alex typing...</span>
           </div>
         </div>
         <div class="mock-panel" style="margin-top:12px">
@@ -225,7 +205,7 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
         <div class="mini-card">
           <div class="mini-title">Connected Devices — 3 active</div>
           <div class="device-row"><div class="dev-dot"></div><div class="dev-name">Nova-Lion</div><div class="dev-badge">You</div></div>
-          <div class="device-row"><div class="dev-dot"></div><div class="dev-name">Ali-Mobile</div><div class="dev-badge">Phone</div></div>
+          <div class="device-row"><div class="dev-dot"></div><div class="dev-name">John-Mobile</div><div class="dev-badge">Phone</div></div>
           <div class="device-row"><div class="dev-dot"></div><div class="dev-name">Office-PC</div><div class="dev-badge">Desktop</div></div>
         </div>
         <div class="bottom-row">
@@ -256,47 +236,47 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
     <div class="feat-card">
       <div class="feat-icon">⚡</div>
       <div class="feat-title">Auto Device Discovery</div>
-      <p class="feat-desc">mDNS se automatically sab devices dhundh leta hai. Koi IP type karne ki zaroorat nahi — bas same Wi-Fi pe raho.</p>
+      <p class="feat-desc">Finds all devices on your network automatically using mDNS. No IP addresses to type — just connect to the same Wi-Fi.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">📝</div>
       <div class="feat-title">Collaborative Editor</div>
-      <p class="feat-desc">Tiptap-based rich text editor jisme sab log ek saath type kar sakte hain. Live cursors dikhte hain real-time mein.</p>
+      <p class="feat-desc">A rich-text editor where everyone types at the same time. Live cursors show who is editing and where — in real-time.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">📁</div>
       <div class="feat-title">Lightning File Sharing</div>
-      <p class="feat-desc">500MB file sirf 3 seconds mein transfer. Local network ki poori bandwidth use hoti hai — koi cloud bottleneck nahi.</p>
+      <p class="feat-desc">Transfer files up to 500MB in seconds. Uses your full local network speed with no cloud bottleneck or upload limits.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">📋</div>
       <div class="feat-title">Clipboard Sync</div>
-      <p class="feat-desc">PC pe copy karo, phone pe paste ho jaata hai. Seedha aur instant — koi extra app nahi chahiye.</p>
+      <p class="feat-desc">Copy on your PC, paste on your phone. Clipboard content syncs instantly across all connected devices — no extra app needed.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">💬</div>
       <div class="feat-title">Group Chat</div>
-      <p class="feat-desc">Kaam karte karte discuss bhi karo — sab ek hi app mein. Koi WhatsApp, koi Slack ki zaroorat nahi.</p>
+      <p class="feat-desc">Discuss your work without leaving the app. A built-in group chat keeps all your team communication in one place.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">🔒</div>
       <div class="feat-title">PIN Protected Rooms</div>
-      <p class="feat-desc">4-digit PIN se room lock karo. Sirf woh log join karein jo tumhare invited hoon — poora control tumhare haath mein.</p>
+      <p class="feat-desc">Lock your session with a 4-digit PIN. Only invited people can join — you have full control over who has access.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">📱</div>
       <div class="feat-title">QR Code Join</div>
-      <p class="feat-desc">Phone se QR scan karo aur fauran connect. IP address yaad rakhne ki zaroorat bilkul nahi.</p>
+      <p class="feat-desc">Scan the QR code from any phone to join the session instantly. No typing, no IP addresses, zero friction.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">⏱</div>
       <div class="feat-title">Auto Expiry & Cleanup</div>
-      <p class="feat-desc">Files aur data automatically expire ho jaate hain. Privacy aur storage dono ka khayal rakha jaata hai.</p>
+      <p class="feat-desc">Files and shared data expire automatically after a set time. Keeps your session private and your storage clean.</p>
     </div>
     <div class="feat-card">
       <div class="feat-icon">🚀</div>
       <div class="feat-title">Zero Installation</div>
-      <p class="feat-desc">ZIP extract karo, run.bat double click — ho gaya. Node.js bhi andar packaged hai, alag se kuch nahi chahiye.</p>
+      <p class="feat-desc">Extract the ZIP and double-click run.bat — that is it. Node.js is bundled inside, nothing else to install.</p>
     </div>
   </div>
 </section>
@@ -305,29 +285,29 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
 <section class="section section-alt" id="how">
   <div class="center">
     <div class="section-label">How It Works</div>
-    <h2>3 steps mein shuru karo</h2>
-    <p class="section-sub">Koi installation nahi, koi account nahi, koi internet nahi. Bas extract karo aur chala lo.</p>
+    <h2>Up and running in 3 steps</h2>
+    <p class="section-sub">No installation, no account, no internet required. Just extract and run.</p>
   </div>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-title">Download & Extract</div>
-      <p class="step-desc">ZIP download karo aur kisi bhi folder mein extract karo. Node.js bhi ZIP ke andar hai — alag se install karne ki zaroorat nahi.</p>
+      <p class="step-desc">Download the ZIP and extract it anywhere on your PC. Node.js is bundled inside — nothing else to install separately.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-title">run.bat Double Click</div>
-      <p class="step-desc">Ek click — server start, browser khul jaata hai. Koi command line nahi, koi setup screen nahi.</p>
+      <div class="step-title">Double-click run.bat</div>
+      <p class="step-desc">One click starts the server and opens your browser automatically. No command line, no setup screen required.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-title">Team Connect Kare</div>
-      <p class="step-desc">Same Wi-Fi ke log QR scan karein ya browser mein link kholen — sab automatic detect ho jaate hain.</p>
+      <div class="step-title">Team Joins In</div>
+      <p class="step-desc">Anyone on the same Wi-Fi scans the QR code or opens the link in their browser — they connect automatically.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
       <div class="step-title">Collaborate!</div>
-      <p class="step-desc">Files share karo, editor mein kaam karo, chat karo — sab kuch ek hi jagah, bina internet ke.</p>
+      <p class="step-desc">Share files, edit documents together, sync clipboards, and chat — all in one place, with no internet required.</p>
     </div>
   </div>
 </section>
@@ -336,8 +316,8 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
 <section class="section" id="compare">
   <div class="center">
     <div class="section-label">Comparison</div>
-    <h2>Kyun QuickShare Hub?</h2>
-    <p class="section-sub">Doosre tools sirf file share karte hain. Hum poora collaboration workspace dete hain.</p>
+    <h2>Why QuickShare Hub?</h2>
+    <p class="section-sub">Other tools only transfer files. We give you a complete local collaboration workspace.</p>
   </div>
   <div class="compare-wrap">
     <table>
@@ -364,14 +344,14 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
   </div>
 </section>
 
-<!-- DOWNLOAD CTA -->
+<!-- DOWNLOAD -->
 <section class="download-section" id="download">
   <div class="dl-box">
-    <h2>Aaj hi try karo — bilkul free</h2>
-    <p>Koi account nahi, koi internet nahi, koi risk nahi. ZIP download karo, extract karo, aur apni team ke saath share karo.</p>
+    <h2>Try it today — completely free</h2>
+    <p>No account, no internet, no risk. Download, extract, and share with your team in under a minute.</p>
     <div class="dl-btns">
-      <button class="btn-lg btn-lg-primary">⬇ Free Download — Basic</button>
-      <button class="btn-lg btn-lg-outline">Advanced Version — Coming Soon</button>
+      <a href="YOUR_GITHUB_DOWNLOAD_LINK_HERE" class="btn-lg btn-lg-primary">⬇ Free Download — Basic</a>
+      <a href="waitlist.html" class="btn-lg btn-lg-outline">⭐ Advanced Version — Join Waitlist</a>
     </div>
     <p class="dl-note">Windows x64 &nbsp;•&nbsp; Portable .zip &nbsp;•&nbsp; No install needed &nbsp;•&nbsp; Node.js included</p>
   </div>
@@ -390,6 +370,7 @@ footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:fle
     <a href="#features">Features</a>
     <a href="#download">Download</a>
     <a href="#compare">Compare</a>
+    <a href="waitlist.html">Pro Waitlist</a>
   </div>
 </footer>
 
