@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickShare Hub — Local Network Collaboration, No Internet Needed</title>
+<meta name="description" content="Share files, collaborate in real-time, sync clipboard — all on your local Wi-Fi. No internet, no cloud, no accounts required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0e1a;color:#f0f4ff;overflow-x:hidden;line-height:1.6}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 60px;border-bottom:0.5px solid rgba(99,102,241,0.2);position:sticky;top:0;background:rgba(10,14,26,0.92);backdrop-filter:blur(14px);z-index:100}
+.logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:#fff;text-decoration:none}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#4F46E5,#818cf8);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.logo span{color:#818cf8}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:#94a3b8;text-decoration:none;font-size:14px;transition:color 0.2s}
+.nav-links a:hover{color:#e2e8f0}
+.nav-right{display:flex;gap:12px;align-items:center}
+.btn-ghost{background:transparent;border:0.5px solid rgba(99,102,241,0.35);color:#a5b4fc;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-family:'Inter',sans-serif;transition:all 0.2s}
+.btn-ghost:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.6)}
+.btn-primary-sm{background:linear-gradient(135deg,#4F46E5,#6366F1);border:none;color:#fff;padding:9px 22px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;transition:opacity 0.2s}
+.btn-primary-sm:hover{opacity:0.88}
+
+/* HERO */
+.hero{padding:100px 60px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.12) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.1);border:0.5px solid rgba(99,102,241,0.3);padding:7px 18px;border-radius:20px;font-size:13px;color:#a5b4fc;margin-bottom:32px}
+.badge-dot{width:7px;height:7px;background:#6366F1;border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,6.5vw,72px);font-weight:700;line-height:1.05;letter-spacing:-2.5px;margin-bottom:22px;color:#fff}
+h1 .gradient{background:linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;color:#94a3b8;max-width:580px;margin:0 auto 40px;line-height:1.75}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+.btn-lg{padding:15px 30px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+.btn-lg-primary{background:linear-gradient(135deg,#4F46E5,#6366F1);border:none;color:#fff}
+.btn-lg-primary:hover{opacity:0.88;transform:translateY(-2px)}
+.btn-lg-outline{background:transparent;border:0.5px solid rgba(255,255,255,0.18);color:#e2e8f0}
+.btn-lg-outline:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.3)}
+.hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:60px}
+.stat-num{font-size:30px;font-weight:700;color:#fff;font-family:'Space Grotesk',sans-serif}
+.stat-label{font-size:13px;color:#475569;margin-top:3px}
+
+/* MOCKUP */
+.mockup-wrap{background:rgba(20,30,50,0.7);border:0.5px solid rgba(99,102,241,0.22);border-radius:18px;padding:20px;max-width:900px;margin:0 auto}
+.mockup-bar{display:flex;align-items:center;gap:8px;margin-bottom:18px;padding-bottom:14px;border-bottom:0.5px solid rgba(99,102,241,0.12)}
+.dot{width:11px;height:11px;border-radius:50%}
+.url-bar{background:rgba(10,14,26,0.8);border-radius:6px;padding:5px 16px;font-size:12px;color:#475569;flex:1;max-width:320px;margin:0 auto;text-align:center}
+.host-label{font-size:11px;color:#10b981;margin-left:auto;display:flex;align-items:center;gap:5px}
+.host-label-dot{width:6px;height:6px;background:#10b981;border-radius:50%}
+.mockup-grid{display:grid;grid-template-columns:1fr 290px;gap:16px}
+.mock-panel{background:rgba(10,14,26,0.7);border-radius:12px;padding:16px;border:0.5px solid rgba(99,102,241,0.12)}
+.mock-panel-title{font-size:12px;color:#6366F1;font-weight:500;display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.tb{background:rgba(99,102,241,0.08);border:none;color:#94a3b8;padding:4px 9px;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif}
+.editor-area{background:rgba(20,30,50,0.6);border-radius:8px;padding:14px;min-height:90px;font-size:12px;color:#64748b;line-height:1.7}
+.cursor{color:#6366F1;animation:blink 1.2s step-end infinite}
+.typing-badge{font-size:10px;background:rgba(99,102,241,0.18);color:#a5b4fc;padding:2px 8px;border-radius:4px}
+.clip-panel{margin-top:14px;padding-top:14px;border-top:0.5px solid rgba(99,102,241,0.1)}
+.right-panels{display:flex;flex-direction:column;gap:12px}
+.mini-card{background:rgba(10,14,26,0.7);border-radius:12px;padding:14px;border:0.5px solid rgba(99,102,241,0.12)}
+.mini-title{font-size:11px;color:#94a3b8;font-weight:500;margin-bottom:10px}
+.dropzone{border:1px dashed rgba(99,102,241,0.3);border-radius:8px;padding:14px;text-align:center;font-size:11px;color:#475569;line-height:1.6}
+.device-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:0.5px solid rgba(99,102,241,0.08)}
+.device-row:last-child{border:none}
+.dev-dot{width:6px;height:6px;background:#10b981;border-radius:50%}
+.dev-name{font-size:11px;color:#94a3b8;flex:1}
+.dev-badge{font-size:10px;background:rgba(99,102,241,0.12);color:#a5b4fc;padding:2px 8px;border-radius:8px}
+.bottom-row{display:flex;gap:10px}
+.time-card{flex:1;background:rgba(10,14,26,0.7);border-radius:10px;padding:12px;text-align:center;border:0.5px solid rgba(99,102,241,0.12)}
+.time-num{font-size:22px;font-weight:700;color:#6366F1}
+.time-label{font-size:10px;color:#475569}
+.qr-card{flex:1;background:rgba(10,14,26,0.7);border-radius:10px;padding:12px;text-align:center;border:0.5px solid rgba(99,102,241,0.12)}
+.qr-box{width:44px;height:44px;margin:4px auto;background:repeating-linear-gradient(0deg,rgba(99,102,241,0.25) 0,rgba(99,102,241,0.25) 2px,transparent 2px,transparent 4px),repeating-linear-gradient(90deg,rgba(99,102,241,0.25) 0,rgba(99,102,241,0.25) 2px,transparent 2px,transparent 4px);border-radius:4px}
+
+/* SECTIONS */
+.section{padding:90px 60px}
+.section-alt{background:rgba(20,30,50,0.3)}
+.section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6366F1;font-weight:500;margin-bottom:14px}
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-1.5px;margin-bottom:14px;color:#f0f4ff}
+.section-sub{font-size:17px;color:#64748b;max-width:540px;margin:0 auto 56px;line-height:1.75}
+.center{text-align:center}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1020px;margin:0 auto}
+.feat-card{background:rgba(20,30,50,0.5);border:0.5px solid rgba(99,102,241,0.14);border-radius:14px;padding:26px;transition:all 0.22s}
+.feat-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-4px);background:rgba(30,41,60,0.7)}
+.feat-icon{width:44px;height:44px;background:rgba(99,102,241,0.1);border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px}
+.feat-title{font-size:16px;font-weight:600;margin-bottom:8px;color:#e2e8f0}
+.feat-desc{font-size:14px;color:#64748b;line-height:1.65}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px;max-width:920px;margin:0 auto}
+.step{text-align:center;padding:24px 16px}
+.step-num{width:48px;height:48px;background:linear-gradient(135deg,#4F46E5,#818cf8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin:0 auto 18px;color:#fff}
+.step-title{font-size:16px;font-weight:600;margin-bottom:8px;color:#e2e8f0}
+.step-desc{font-size:14px;color:#64748b;line-height:1.65}
+
+/* COMPARE TABLE */
+.compare-wrap{background:rgba(20,30,50,0.5);border:0.5px solid rgba(99,102,241,0.15);border-radius:16px;padding:0;max-width:820px;margin:0 auto;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead tr{background:rgba(99,102,241,0.08)}
+th{padding:14px 20px;text-align:left;color:#64748b;font-weight:500;border-bottom:0.5px solid rgba(99,102,241,0.15)}
+th.qs{color:#a5b4fc}
+td{padding:13px 20px;border-bottom:0.5px solid rgba(99,102,241,0.07);color:#94a3b8}
+td:first-child{color:#cbd5e1;font-weight:500}
+td.qs{color:#a5b4fc}
+.yes{color:#10b981;font-size:16px}
+.no{color:#ef4444;font-size:16px}
+tr:last-child td{border:none}
+tr:hover td{background:rgba(99,102,241,0.04)}
+
+/* DOWNLOAD SECTION */
+.download-section{padding:60px 60px 80px}
+.dl-box{background:linear-gradient(135deg,rgba(79,70,229,0.18),rgba(99,102,241,0.08));border:0.5px solid rgba(99,102,241,0.28);border-radius:20px;padding:64px 40px;max-width:740px;margin:0 auto;text-align:center}
+.dl-box h2{font-size:clamp(28px,4vw,42px);margin-bottom:16px}
+.dl-box p{color:#94a3b8;font-size:17px;margin-bottom:36px;line-height:1.75}
+.dl-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.dl-note{font-size:13px;color:#334155;margin-top:20px}
+
+/* FOOTER */
+footer{padding:40px 60px;border-top:0.5px solid rgba(99,102,241,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:13px;color:#334155}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:#334155;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:#94a3b8}
+.coming-soon-badge{display:inline-block;background:rgba(234,179,8,0.1);border:0.5px solid rgba(234,179,8,0.3);color:#fbbf24;font-size:11px;padding:3px 10px;border-radius:10px;margin-left:8px;vertical-align:middle}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .hero{padding:70px 20px 50px}
+  .hero-stats{gap:24px}
+  .section{padding:60px 20px}
+  .download-section{padding:40px 20px 60px}
+  .mockup-grid{grid-template-columns:1fr}
+  .right-panels{display:none}
+  footer{padding:30px 20px;flex-direction:column;text-align:center}
+  .dl-box{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5 6M12 11l5 6"/><path d="M7 17h10"/></svg>
+    </div>
+    QuickShare <span>Hub</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#compare">Compare</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-ghost">Advanced Version <span class="coming-soon-badge">Soon</span></button>
+    <button class="btn-primary-sm" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Download</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><span class="badge-dot"></span> No internet. No cloud. Just your Wi-Fi.</div>
+  <h1>Share, Collaborate &<br><span class="gradient">Work Offline</span> Together</h1>
+  <p class="hero-sub">QuickShare Hub turns your local Wi-Fi into a full collaboration workspace. Files, editor, clipboard, chat — all synced instantly across devices.</p>
+  <div class="hero-btns">
+    <button class="btn-lg btn-lg-primary" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">⬇ Free Download — Windows</button>
+    <button class="btn-lg btn-lg-outline" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">See Features</button>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">500MB</div><div class="stat-label">Transfer in ~3 seconds</div></div>
+    <div><div class="stat-num">0</div><div class="stat-label">Internet needed</div></div>
+    <div><div class="stat-num">1-click</div><div class="stat-label">Run & start</div></div>
+    <div><div class="stat-num">Free</div><div class="stat-label">Basic version</div></div>
+  </div>
+
+  <!-- MOCKUP -->
+  <div class="mockup-wrap">
+    <div class="mockup-bar">
+      <div class="dot" style="background:#ef4444"></div>
+      <div class="dot" style="background:#f59e0b"></div>
+      <div class="dot" style="background:#10b981"></div>
+      <div class="url-bar">192.168.43.178:3000 &nbsp;•&nbsp; Room: netshare-6UDYBM</div>
+      <div class="host-label"><span class="host-label-dot"></span> PRIMARY HOST</div>
+    </div>
+    <div class="mockup-grid">
+      <div>
+        <div class="mock-panel">
+          <div class="mock-panel-title">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Collaborative Editor — Real-time sync
+          </div>
+          <div class="toolbar">
+            <button class="tb">B</button><button class="tb">I</button><button class="tb">S</button>
+            <button class="tb">H1</button><button class="tb">H2</button><button class="tb">H3</button>
+            <button class="tb">List</button><button class="tb">Code</button>
+          </div>
+          <div class="editor-area">
+            Start typing your shared document here... All edits sync in real-time.<br><br>
+            <span class="cursor">|</span> <span class="typing-badge">Ali typing...</span>
+          </div>
+        </div>
+        <div class="mock-panel" style="margin-top:12px">
+          <div class="mock-panel-title">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Live Clipboard — Synced across all devices
+          </div>
+          <div class="editor-area" style="min-height:44px">Type or paste here — syncs instantly to all connected devices...</div>
+        </div>
+      </div>
+      <div class="right-panels">
+        <div class="mini-card">
+          <div class="mini-title">File Drop Zone &nbsp;•&nbsp; Max 500MB</div>
+          <div class="dropzone">Drop files or <span style="color:#6366F1">browse</span><br><span style="font-size:10px">All file types supported</span></div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-title">Connected Devices — 3 active</div>
+          <div class="device-row"><div class="dev-dot"></div><div class="dev-name">Nova-Lion</div><div class="dev-badge">You</div></div>
+          <div class="device-row"><div class="dev-dot"></div><div class="dev-name">Ali-Mobile</div><div class="dev-badge">Phone</div></div>
+          <div class="device-row"><div class="dev-dot"></div><div class="dev-name">Office-PC</div><div class="dev-badge">Desktop</div></div>
+        </div>
+        <div class="bottom-row">
+          <div class="time-card">
+            <div class="time-label">Expiry Timer</div>
+            <div class="time-num">15</div>
+            <div class="time-label">minutes</div>
+          </div>
+          <div class="qr-card">
+            <div class="time-label">Quick Join</div>
+            <div class="qr-box"></div>
+            <div style="font-size:10px;color:#475569;margin-top:4px">Scan to join</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="center">
+    <div class="section-label">Features</div>
+    <h2>Everything your team needs<br>on one network</h2>
+    <p class="section-sub">No accounts, no uploads, no privacy risk. Just connect to the same Wi-Fi and get to work.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">Auto Device Discovery</div>
+      <p class="feat-desc">mDNS se automatically sab devices dhundh leta hai. Koi IP type karne ki zaroorat nahi — bas same Wi-Fi pe raho.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📝</div>
+      <div class="feat-title">Collaborative Editor</div>
+      <p class="feat-desc">Tiptap-based rich text editor jisme sab log ek saath type kar sakte hain. Live cursors dikhte hain real-time mein.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📁</div>
+      <div class="feat-title">Lightning File Sharing</div>
+      <p class="feat-desc">500MB file sirf 3 seconds mein transfer. Local network ki poori bandwidth use hoti hai — koi cloud bottleneck nahi.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📋</div>
+      <div class="feat-title">Clipboard Sync</div>
+      <p class="feat-desc">PC pe copy karo, phone pe paste ho jaata hai. Seedha aur instant — koi extra app nahi chahiye.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💬</div>
+      <div class="feat-title">Group Chat</div>
+      <p class="feat-desc">Kaam karte karte discuss bhi karo — sab ek hi app mein. Koi WhatsApp, koi Slack ki zaroorat nahi.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔒</div>
+      <div class="feat-title">PIN Protected Rooms</div>
+      <p class="feat-desc">4-digit PIN se room lock karo. Sirf woh log join karein jo tumhare invited hoon — poora control tumhare haath mein.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📱</div>
+      <div class="feat-title">QR Code Join</div>
+      <p class="feat-desc">Phone se QR scan karo aur fauran connect. IP address yaad rakhne ki zaroorat bilkul nahi.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">⏱</div>
+      <div class="feat-title">Auto Expiry & Cleanup</div>
+      <p class="feat-desc">Files aur data automatically expire ho jaate hain. Privacy aur storage dono ka khayal rakha jaata hai.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🚀</div>
+      <div class="feat-title">Zero Installation</div>
+      <p class="feat-desc">ZIP extract karo, run.bat double click — ho gaya. Node.js bhi andar packaged hai, alag se kuch nahi chahiye.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-alt" id="how">
+  <div class="center">
+    <div class="section-label">How It Works</div>
+    <h2>3 steps mein shuru karo</h2>
+    <p class="section-sub">Koi installation nahi, koi account nahi, koi internet nahi. Bas extract karo aur chala lo.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Download & Extract</div>
+      <p class="step-desc">ZIP download karo aur kisi bhi folder mein extract karo. Node.js bhi ZIP ke andar hai — alag se install karne ki zaroorat nahi.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">run.bat Double Click</div>
+      <p class="step-desc">Ek click — server start, browser khul jaata hai. Koi command line nahi, koi setup screen nahi.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Team Connect Kare</div>
+      <p class="step-desc">Same Wi-Fi ke log QR scan karein ya browser mein link kholen — sab automatic detect ho jaate hain.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Collaborate!</div>
+      <p class="step-desc">Files share karo, editor mein kaam karo, chat karo — sab kuch ek hi jagah, bina internet ke.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section" id="compare">
+  <div class="center">
+    <div class="section-label">Comparison</div>
+    <h2>Kyun QuickShare Hub?</h2>
+    <p class="section-sub">Doosre tools sirf file share karte hain. Hum poora collaboration workspace dete hain.</p>
+  </div>
+  <div class="compare-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="qs">⚡ QuickShare Hub</th>
+          <th>Snapdrop</th>
+          <th>LocalSend</th>
+          <th>Pairdrop</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>File Sharing</td><td class="qs yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Collaborative Editor</td><td class="qs yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>Clipboard Sync</td><td class="qs yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>Group Chat</td><td class="qs yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>PIN Room Lock</td><td class="qs yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>QR Code Join</td><td class="qs yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+        <tr><td>No Installation</td><td class="qs yes">✓</td><td class="yes">✓</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Activity Log</td><td class="qs yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="download-section" id="download">
+  <div class="dl-box">
+    <h2>Aaj hi try karo — bilkul free</h2>
+    <p>Koi account nahi, koi internet nahi, koi risk nahi. ZIP download karo, extract karo, aur apni team ke saath share karo.</p>
+    <div class="dl-btns">
+      <button class="btn-lg btn-lg-primary">⬇ Free Download — Basic</button>
+      <button class="btn-lg btn-lg-outline">Advanced Version — Coming Soon</button>
+    </div>
+    <p class="dl-note">Windows x64 &nbsp;•&nbsp; Portable .zip &nbsp;•&nbsp; No install needed &nbsp;•&nbsp; Node.js included</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo" style="font-size:15px;text-decoration:none">
+    <div class="logo-icon" style="width:28px;height:28px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5 6M12 11l5 6"/><path d="M7 17h10"/></svg>
+    </div>
+    QuickShare <span style="color:#818cf8">Hub</span>
+  </a>
+  <div class="footer-copy">© 2026 QuickShare Hub. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#download">Download</a>
+    <a href="#compare">Compare</a>
+  </div>
+</footer>
+
+</body>
+</html>

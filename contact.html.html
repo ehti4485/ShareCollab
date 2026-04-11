@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickShare Premium — Join the Waitlist</title>
+<meta name="description" content="Be the first to access QuickShare Premium. End-to-end encryption, unlimited file size, persistent chat history and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0e1a;color:#f0f4ff;min-height:100vh;overflow-x:hidden}
+
+.bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.glow-1{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(251,146,60,0.08) 0%,transparent 65%)}
+.glow-2{position:absolute;bottom:-100px;left:-200px;width:600px;height:500px;background:radial-gradient(ellipse,rgba(99,102,241,0.07) 0%,transparent 65%)}
+.glow-3{position:absolute;bottom:-100px;right:-200px;width:600px;height:500px;background:radial-gradient(ellipse,rgba(234,88,12,0.06) 0%,transparent 65%)}
+
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;background:rgba(251,146,60,0.4);border-radius:50%;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px);opacity:0}}
+
+nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 48px}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#fff;text-decoration:none}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#4F46E5,#818cf8);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.logo span{color:#818cf8}
+.nav-back{background:transparent;border:0.5px solid rgba(255,255,255,0.12);color:#94a3b8;padding:8px 18px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;text-decoration:none;display:flex;align-items:center;gap:6px;transition:all 0.2s}
+.nav-back:hover{background:rgba(255,255,255,0.05);color:#e2e8f0}
+
+main{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:40px 20px 80px}
+
+.pro-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(251,146,60,0.15),rgba(234,88,12,0.1));border:0.5px solid rgba(251,146,60,0.35);padding:8px 20px;border-radius:20px;font-size:13px;color:#fb923c;margin-bottom:28px;font-weight:500}
+.star-icon{animation:wobble 2.5s ease-in-out infinite;display:inline-block}
+@keyframes wobble{0%,100%{transform:rotate(0deg)}30%{transform:rotate(18deg)}70%{transform:rotate(-18deg)}}
+
+.headline{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,5.5vw,64px);font-weight:700;text-align:center;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;max-width:720px}
+.gold{background:linear-gradient(135deg,#fb923c,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:17px;color:#64748b;text-align:center;max-width:500px;line-height:1.75;margin-bottom:44px}
+
+.counter-wrap{display:flex;align-items:center;gap:12px;margin-bottom:44px}
+.avatars{display:flex}
+.avatar{width:34px;height:34px;border-radius:50%;border:2px solid #0a0e1a;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.avatar:first-child{margin-left:0}
+.av1{background:linear-gradient(135deg,#6366F1,#818cf8)}
+.av2{background:linear-gradient(135deg,#ec4899,#f472b6)}
+.av3{background:linear-gradient(135deg,#10b981,#34d399)}
+.av4{background:linear-gradient(135deg,#f59e0b,#fbbf24)}
+.av5{background:linear-gradient(135deg,#ef4444,#f87171)}
+.counter-text{font-size:14px;color:#94a3b8}
+.counter-text strong{color:#fb923c}
+
+.features-strip{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:48px;max-width:780px}
+.feat-pill{display:flex;align-items:center;gap:7px;background:rgba(20,30,50,0.7);border:0.5px solid rgba(99,102,241,0.18);padding:9px 16px;border-radius:40px;font-size:13px;color:#94a3b8;transition:all 0.2s}
+.feat-pill:hover{border-color:rgba(251,146,60,0.35);color:#e2e8f0;transform:translateY(-1px)}
+.new-tag{font-size:10px;background:rgba(251,146,60,0.15);color:#fb923c;padding:2px 7px;border-radius:6px;margin-left:4px;font-weight:500}
+
+.form-card{background:rgba(15,23,42,0.88);border:0.5px solid rgba(99,102,241,0.2);border-radius:20px;padding:44px 40px;width:100%;max-width:520px;position:relative;overflow:hidden}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4F46E5,#fb923c,#f59e0b)}
+.form-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;text-align:center}
+.form-subtitle{font-size:14px;color:#475569;text-align:center;margin-bottom:32px;line-height:1.6}
+
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;color:#94a3b8;font-weight:500;margin-bottom:7px}
+.field input,.field select{width:100%;background:rgba(10,14,26,0.8);border:0.5px solid rgba(99,102,241,0.2);border-radius:10px;padding:13px 16px;font-size:15px;color:#f0f4ff;font-family:'Inter',sans-serif;outline:none;transition:all 0.2s;-webkit-appearance:none;appearance:none}
+.field input::placeholder{color:#334155}
+.field input:focus,.field select:focus{border-color:rgba(251,146,60,0.5);background:rgba(10,14,26,0.95)}
+.field select option{background:#0f172a;color:#f0f4ff}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.submit-btn{width:100%;padding:16px;border-radius:12px;border:none;background:linear-gradient(135deg,#ea580c,#f59e0b);color:#fff;font-size:16px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all 0.25s;margin-top:10px;position:relative;overflow:hidden}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(234,88,12,0.32)}
+.submit-btn:active{transform:translateY(0)}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+
+.privacy{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:#334155;margin-top:14px;text-align:center}
+
+.success-state{display:none;text-align:center;padding:16px 0}
+.success-icon{width:72px;height:72px;background:rgba(251,146,60,0.1);border:0.5px solid rgba(251,146,60,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;animation:popIn 0.5s ease}
+@keyframes popIn{0%{transform:scale(0.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.success-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px}
+.success-sub{font-size:15px;color:#64748b;line-height:1.75;margin-bottom:28px}
+.waitlist-num{font-size:48px;font-weight:700;color:#fb923c;font-family:'Space Grotesk',sans-serif;letter-spacing:-2px}
+.waitlist-label{font-size:13px;color:#334155;margin-top:4px;margin-bottom:28px}
+.back-home{display:inline-flex;align-items:center;gap:8px;background:transparent;border:0.5px solid rgba(255,255,255,0.15);color:#94a3b8;padding:11px 24px;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;text-decoration:none;transition:all 0.2s}
+.back-home:hover{background:rgba(255,255,255,0.05);color:#e2e8f0}
+
+.bottom-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:780px;width:100%;margin-top:52px}
+.bf-card{background:rgba(15,23,42,0.5);border:0.5px solid rgba(99,102,241,0.12);border-radius:14px;padding:22px;display:flex;gap:14px;align-items:flex-start;transition:all 0.22s}
+.bf-card:hover{border-color:rgba(251,146,60,0.22);transform:translateY(-3px)}
+.bf-icon{width:42px;height:42px;min-width:42px;background:rgba(251,146,60,0.08);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.bf-title{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:5px}
+.bf-desc{font-size:12px;color:#475569;line-height:1.65}
+.bf-tag{font-size:10px;background:rgba(251,146,60,0.1);color:#fb923c;border:0.5px solid rgba(251,146,60,0.2);padding:2px 9px;border-radius:6px;display:inline-block;margin-top:8px;font-weight:500}
+
+footer{position:relative;z-index:1;text-align:center;padding:32px 20px;border-top:0.5px solid rgba(99,102,241,0.08)}
+.footer-copy{font-size:13px;color:#1e293b}
+.footer-links{display:flex;gap:20px;justify-content:center;margin-top:10px}
+.footer-links a{font-size:12px;color:#1e293b;text-decoration:none}
+.footer-links a:hover{color:#475569}
+
+.spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){
+  nav{padding:16px 20px}
+  .form-card{padding:28px 20px}
+  .field-row{grid-template-columns:1fr}
+  .bottom-features{grid-template-columns:1fr}
+  .headline{letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="glow-3"></div>
+</div>
+<div class="particles" id="particles"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5 6M12 11l5 6"/><path d="M7 17h10"/></svg>
+    </div>
+    QuickShare <span>Hub</span>
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<main>
+
+  <div class="pro-badge">
+    <span class="star-icon">⭐</span>
+    QuickShare Premium — Early Access
+  </div>
+
+  <h1 class="headline">
+    Be the First to Get<br>
+    <span class="gold">Premium Access</span>
+  </h1>
+  <p class="sub">Join the waitlist and unlock enterprise-grade features before anyone else — at a special early bird price.</p>
+
+  <div class="counter-wrap">
+    <div class="avatars">
+      <div class="avatar av1">A</div>
+      <div class="avatar av2">S</div>
+      <div class="avatar av3">M</div>
+      <div class="avatar av4">Z</div>
+      <div class="avatar av5">R</div>
+    </div>
+    <div class="counter-text"><strong id="count">247</strong> people already on the waitlist</div>
+  </div>
+
+  <div class="features-strip">
+    <div class="feat-pill">🔐 End-to-End Encryption <span class="new-tag">NEW</span></div>
+    <div class="feat-pill">♾️ Unlimited File Size</div>
+    <div class="feat-pill">💬 Persistent Chat History</div>
+    <div class="feat-pill">🎨 Custom Branding</div>
+    <div class="feat-pill">⚡ Priority Support</div>
+  </div>
+
+  <div class="form-card">
+
+    <div id="form-section">
+      <div class="form-title">Join the Pro Waitlist</div>
+      <p class="form-subtitle">Fill in your details — we'll notify you the moment Premium launches with an exclusive early bird offer.</p>
+
+      <form id="waitlist-form">
+        <div class="field-row">
+          <div class="field">
+            <label>Your Name *</label>
+            <input type="text" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="field">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>How will you use it?</label>
+          <select name="use_case">
+            <option value="" disabled selected>Select your use case...</option>
+            <option value="office">Office / Workplace</option>
+            <option value="school">School / University</option>
+            <option value="freelance">Freelance / Creative Studio</option>
+            <option value="personal">Personal Use</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Team size (optional)</label>
+          <select name="team_size">
+            <option value="" disabled selected>How many people?</option>
+            <option value="just-me">Just me</option>
+            <option value="2-5">2 – 5 people</option>
+            <option value="6-20">6 – 20 people</option>
+            <option value="20+">20+ people</option>
+          </select>
+        </div>
+
+        <input type="hidden" name="source" value="QuickShare Hub Premium Waitlist">
+        <input type="hidden" name="_subject" value="New Premium Waitlist Signup!">
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          ⭐ Join Pro Waitlist — It's Free
+        </button>
+      </form>
+
+      <div class="privacy">🔒 Your email is safe — no spam, never shared with anyone</div>
+    </div>
+
+    <div class="success-state" id="success-section">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">You're on the list!</div>
+      <p class="success-sub">Thank you for signing up! When Premium launches, you'll be <strong style="color:#fb923c">notified first</strong> with an exclusive early bird discount.</p>
+      <div class="waitlist-num" id="position-num">#248</div>
+      <div class="waitlist-label">Your waitlist position</div>
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </div>
+
+  </div>
+
+  <div class="bottom-features">
+    <div class="bf-card">
+      <div class="bf-icon">🔐</div>
+      <div>
+        <div class="bf-title">End-to-End Encryption</div>
+        <p class="bf-desc">Military-grade E2EE for all your files and shared text. Your data never leaves your network unencrypted.</p>
+        <span class="bf-tag">Premium Only</span>
+      </div>
+    </div>
+    <div class="bf-card">
+      <div class="bf-icon">♾️</div>
+      <div>
+        <div class="bf-title">Unlimited File Size</div>
+        <p class="bf-desc">No more 500MB limits. Transfer entire folders, 4K exports, and large archives instantly over LAN.</p>
+        <span class="bf-tag">Premium Only</span>
+      </div>
+    </div>
+    <div class="bf-card">
+      <div class="bf-icon">💬</div>
+      <div>
+        <div class="bf-title">Persistent Chat History</div>
+        <p class="bf-desc">Access your full communication logs even after restarting the hub. Fully searchable and exportable.</p>
+        <span class="bf-tag">Premium Only</span>
+      </div>
+    </div>
+    <div class="bf-card">
+      <div class="bf-icon">🎨</div>
+      <div>
+        <div class="bf-title">Custom Branding</div>
+        <p class="bf-desc">Add your company logo, set a custom theme, and personalize the hub landing page for your team.</p>
+        <span class="bf-tag">Premium Only</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-copy">© 2026 QuickShare Hub. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Floating particles
+const container = document.getElementById('particles');
+for(let i = 0; i < 20; i++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = 1 + Math.random() * 2;
+  p.style.cssText = `left:${Math.random()*100}%;width:${size}px;height:${size}px;animation-duration:${8+Math.random()*14}s;animation-delay:${Math.random()*12}s;opacity:${0.2+Math.random()*0.4};`;
+  container.appendChild(p);
+}
+
+// Counter animation — slowly ticks up
+let count = 247;
+const countEl = document.getElementById('count');
+setTimeout(() => {
+  const iv = setInterval(() => {
+    count++;
+    countEl.textContent = count;
+    if(count >= 255) clearInterval(iv);
+  }, 1100);
+}, 3000);
+
+// Form submit via Formspree
+const form = document.getElementById('waitlist-form');
+const btn = document.getElementById('submit-btn');
+const formSection = document.getElementById('form-section');
+const successSection = document.getElementById('success-section');
+const posNum = document.getElementById('position-num');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Submitting...';
+
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch('https://formspree.io/f/mdapvzew', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if(res.ok){
+      posNum.textContent = '#' + (248 + Math.floor(Math.random() * 12));
+      formSection.style.display = 'none';
+      successSection.style.display = 'block';
+      successSection.style.animation = 'fadeUp 0.5s ease';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '⭐ Join Pro Waitlist — It\'s Free';
+      alert('Something went wrong. Please try again!');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.innerHTML = '⭐ Join Pro Waitlist — It\'s Free';
+    alert('Network error. Please check your connection and try again.');
+  }
+});
+</script>
+
+<style>@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}</style>
+</body>
+</html>
